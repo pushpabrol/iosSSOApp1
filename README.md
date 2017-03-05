@@ -9,7 +9,8 @@
  ### Please read the note below before setting up the Client App within Auth0
  - Create a Client within Auth0 and see the link -> https://github.com/auth0/Auth0.swift#web-based-auth-ios-only to set the settings based on your iOS App
  
- ### App to App SSO requires that the 2 Apps share the same same keychain. Also for the purposes of this demo the 2 apps share the same refresh_token so that one app can use the refresh_token of the other App. Ideally just using webAuth to do SSO using safari should work fine too.
+ ### App to App SSO
+ - This requires that the 2 Apps share the same same keychain. Also for the purposes of this demo the 2 apps share the same refresh_token so that one app can use the refresh_token of the other App. Ideally just using webAuth to do SSO using safari should work fine too.
 
  ### Please read the note below before setting up the API within Auth0
  - Make sure while defining the API within Auth0 the toggle for allow offline access is enabled. make sure when creating the API you have defined the Signing algorithm as RS256 and make a note of the identifier for the API within Auth0. This identifier will be used as the API_AUDIENCE in the settings below
