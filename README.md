@@ -49,7 +49,7 @@
 			<string>auth0</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.auth0.App2SSO</string>
+				<string>com.auth0.Auth0WebAuth</string>
 			</array>
 		</dict>
 	</array>
