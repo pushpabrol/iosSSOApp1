@@ -19,27 +19,30 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationIsActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationEnteredForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
         checkRefreshTokenAndPerformSegue()
         
-        
-        
     }
     
-    
-    func applicationIsActive() {
-        print("Application Did Become Active");
-    }
     
     func applicationEnteredForeground(){
-        checkRefreshTokenAndPerformSegue()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-       
+        if (Application.sharedInstance.keychainService.string(forKey: "refreshToken") != nil)
+        {
+            getTokens(fromRefreshToken: Application.sharedInstance.keychainService.string(forKey: "refreshToken")! )
+            self.performSegue(withIdentifier: "loggedin", sender: self)
+            
+            
+            
+        }
+        else
+        {
+            
+            if(self.navigationController?.visibleViewController?.isKind(of: LoggedInViewController.self))!
+            {
+                self.performSegue(withIdentifier: "loginView", sender: self)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
